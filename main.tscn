@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://dc5r3yqp3bokw"]
+
+[ext_resource type="Script" path="res://GameManager.cs" id="1_2hafb"]
+[ext_resource type="Script" path="res://NPC.cs" id="3_t1hmr"]
+[ext_resource type="Script" path="res://TalkTrigger.cs" id="4_46trl"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3ebgo"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4gdoj"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7m3i2"]
+
+[node name="Main" type="Node2D"]
+
+[node name="GameManager" type="Node" parent="."]
+script = ExtResource("1_2hafb")
+
+[node name="NPC_Wizard" type="CharacterBody2D" parent="."]
+script = ExtResource("3_t1hmr")
+physicalDescription = "An old wizard with a purple robe and long white beard."
+locationDescription = "Walking along a path in the village."
+personality = "Wise, smart, mysterious."
+secretKnowledge = "You know the password to gain access to the Knight's house. It is the word \"Please\"."
+
+[node name="Sprite2D" type="Sprite2D" parent="NPC_Wizard"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NPC_Wizard"]
+shape = SubResource("CircleShape2D_3ebgo")
+
+[node name="Player" type="CharacterBody2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+shape = SubResource("CircleShape2D_4gdoj")
+
+[node name="TalkTrigger" type="Area2D" parent="Player"]
+script = ExtResource("4_46trl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/TalkTrigger"]
+shape = SubResource("CircleShape2D_7m3i2")
